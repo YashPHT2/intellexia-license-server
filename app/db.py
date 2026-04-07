@@ -6,10 +6,13 @@ from app.config import get_settings
 
 settings = get_settings()
 
-# Render provides postgres:// but SQLAlchemy 2.x needs postgresql://
+# Render provides postgres:// but SQLAlchemy 2.x needs postgresql+psycopg://
+# Using +psycopg to explicitly use psycopg v3 (not psycopg2)
 _url = settings.DATABASE_URL
 if _url.startswith("postgres://"):
-    _url = _url.replace("postgres://", "postgresql://", 1)
+    _url = _url.replace("postgres://", "postgresql+psycopg://", 1)
+elif _url.startswith("postgresql://"):
+    _url = _url.replace("postgresql://", "postgresql+psycopg://", 1)
 
 engine = create_engine(
     _url,
