@@ -1,0 +1,24 @@
+databases:
+  - name: intellexia-license-db
+    plan: free
+    databaseName: intellexia_licenses
+    user: intellexia
+
+services:
+  - type: web
+    name: intellexia-license-server
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: intellexia-license-db
+          property: connectionURI
+      - key: LICENSE_PRIVATE_KEY_PEM
+        sync: false               # set manually in Render dashboard
+      - key: ADMIN_API_TOKEN
+        generateValue: true
+      - key: APP_ENV
+        value: production
