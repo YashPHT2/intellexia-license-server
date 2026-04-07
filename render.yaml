@@ -17,7 +17,7 @@ services:
           name: intellexia-license-db
           property: connectionString
       - key: LICENSE_PRIVATE_KEY_PEM
-        sync: false               # set manually in Render dashboard
+        value: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1DNENBUUF3QlFZREsyVndCQ0lFSVBXNEdLdFZuRnQyTTYrMER4RVVURHBLT0p3ZVRlN0VTbE5NT1JvUmtvVnEKLS0tLS1FTkQgUFJJVkFURSBLRVktLS0tLQo=
       - key: ADMIN_API_TOKEN
         value: intlx-admin-9k4mH7pQx2wR
       - key: APP_ENV
