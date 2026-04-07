@@ -19,6 +19,6 @@ services:
       - key: LICENSE_PRIVATE_KEY_PEM
         sync: false               # set manually in Render dashboard
       - key: ADMIN_API_TOKEN
-        generateValue: true
+        value: intlx-admin-9k4mH7pQx2wR
       - key: APP_ENV
         value: production
